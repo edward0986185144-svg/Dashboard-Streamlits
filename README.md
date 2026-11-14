@@ -76,9 +76,11 @@ forma flexible:
 calcula los ingresos automáticamente.
 
 Se aceptan CSV con coma, punto y coma o tabulador, y archivos Excel (`.xlsx`).
-Los valores con formato `$ 3.500`, `1.234,56` o `3500` se interpretan como
+Los valores con formato `S/ 3.500`, `1.234,56` o `3500` se interpretan como
 números. Si falta la fecha, el panel sigue funcionando, pero no muestra la
 tendencia diaria.
+
+Todos los importes del panel se muestran en **soles peruanos (S/)**.
 
 ### Actualizar los datos
 

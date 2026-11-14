@@ -467,7 +467,7 @@ def _read_table(payload: bytes, filename: str) -> pd.DataFrame:
 
 
 def _parse_number(value) -> float:
-    """Convierte '1.234,56', '$ 3.500' o '3500' a número."""
+    """Convierte '1.234,56', 'S/ 3.500' o '3500' a número."""
     if value is None:
         return math.nan
     if isinstance(value, (int, float)) and not isinstance(value, bool):
@@ -604,12 +604,12 @@ def money(value: float) -> str:
     if value is None or (isinstance(value, float) and math.isnan(value)):
         return "—"
     if abs(value) >= 1_000_000:
-        return f"${value / 1_000_000:,.1f}M"
-    return f"${value:,.0f}"
+        return f"S/ {value / 1_000_000:,.1f}M"
+    return f"S/ {value:,.0f}"
 
 
 def money_full(value: float) -> str:
-    return f"${value:,.0f}"
+    return f"S/ {value:,.0f}"
 
 
 def units(value: float) -> str:
@@ -717,7 +717,7 @@ def chart_trend(daily: pd.DataFrame) -> go.Figure:
             customdata=list(zip(labels, daily["unidades"])),
             hovertemplate=(
                 "<b>%{customdata[0]}</b><br>"
-                "Ingresos&nbsp;&nbsp;$%{y:,.0f}<br>"
+                "Ingresos&nbsp;&nbsp;S/ %{y:,.0f}<br>"
                 "Unidades&nbsp;&nbsp;%{customdata[1]}<extra></extra>"
             ),
         )
@@ -750,7 +750,7 @@ def chart_trend(daily: pd.DataFrame) -> go.Figure:
     pad = max(span * 0.03, pd.Timedelta(hours=6))
     fig.update_xaxes(range=[daily["fecha"].min() - pad, daily["fecha"].max() + pad])
 
-    fig.update_yaxes(rangemode="tozero", tickprefix="$", tickformat=",.0f")
+    fig.update_yaxes(rangemode="tozero", tickprefix="S/ ", tickformat=",.0f")
     return _base_layout(fig, 315)
 
 
@@ -768,7 +768,7 @@ def chart_donut(products: pd.DataFrame, total: float) -> go.Figure:
         textinfo="none",
         sort=False,
         marker=dict(line=dict(color="#FFFFFF", width=3)),
-        hovertemplate="<b>%{label}</b><br>$%{value:,.0f}<br>%{percent}<extra></extra>",
+        hovertemplate="<b>%{label}</b><br>S/ %{value:,.0f}<br>%{percent}<extra></extra>",
     )
     fig.add_annotation(
         x=0.5,
@@ -805,7 +805,7 @@ def chart_products(products: pd.DataFrame) -> go.Figure:
             customdata=data["unidades"],
             hovertemplate=(
                 "<b>%{y}</b><br>"
-                "Ingresos&nbsp;&nbsp;$%{x:,.0f}<br>"
+                "Ingresos&nbsp;&nbsp;S/ %{x:,.0f}<br>"
                 "Unidades&nbsp;&nbsp;%{customdata}<extra></extra>"
             ),
         )
@@ -841,7 +841,7 @@ def chart_sellers(sellers: pd.DataFrame, products: pd.DataFrame) -> go.Figure:
     )
     fig.update_traces(
         marker_line_width=0,
-        hovertemplate="<b>%{y}</b> · %{fullData.name}<br>$%{x:,.0f}<extra></extra>",
+        hovertemplate="<b>%{y}</b> · %{fullData.name}<br>S/ %{x:,.0f}<extra></extra>",
     )
 
     for row in totals.itertuples():
@@ -947,7 +947,7 @@ def chart_3d(data: pd.DataFrame, has_dates: bool) -> go.Figure:
                     "<b>%{customdata[2]}</b> · %{customdata[0]}<br>"
                     "Vendedor · %{customdata[1]}<br>"
                     "Unidades · %{y}<br>"
-                    "Ingresos · $%{z:,.0f}<extra></extra>"
+                    "Ingresos · S/ %{z:,.0f}<extra></extra>"
                 ),
             )
         )
@@ -988,8 +988,8 @@ def chart_3d(data: pd.DataFrame, has_dates: bool) -> go.Figure:
             },
             zaxis={
                 **axis_style,
-                "title": dict(text="Ingresos ($)", font=dict(size=10, color="#8A8A81")),
-                "tickprefix": "$",
+                "title": dict(text="Ingresos (S/)", font=dict(size=10, color="#8A8A81")),
+                "tickprefix": "S/ ",
                 "tickformat": ",.0f",
             },
             camera=dict(eye=dict(x=1.55, y=-1.55, z=0.95)),
@@ -1462,8 +1462,8 @@ with st.container(border=True):
             "Producto": st.column_config.TextColumn("Producto", width="medium"),
             "Vendedor": st.column_config.TextColumn("Vendedor", width="medium"),
             "Cantidad": st.column_config.NumberColumn("Cantidad", format=qty_format, width="small"),
-            "Precio unitario": st.column_config.NumberColumn("Precio unitario", format="$%.0f", width="small"),
-            "Ingresos": st.column_config.NumberColumn("Ingresos", format="$%d", width="small"),
+            "Precio unitario": st.column_config.NumberColumn("Precio unitario", format="S/ %.0f", width="small"),
+            "Ingresos": st.column_config.NumberColumn("Ingresos", format="S/ %d", width="small"),
         },
     )
 
