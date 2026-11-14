@@ -1,5 +1,10 @@
 __pycache__/
 *.pyc
+.venv/
+venv/
 .streamlit/secrets.toml
+*.log
+reporte_ventas.csv
+reporte_ventas.xlsx
 .DS_Store
 Thumbs.db
