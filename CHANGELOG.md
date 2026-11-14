@@ -15,6 +15,7 @@ Todos los cambios relevantes del proyecto se documentan en este archivo.
 - Tabla de operaciones con búsqueda, ordenamiento y descarga en Excel y CSV.
 - Carga de archivos CSV y Excel desde la interfaz.
 - Detección flexible de columnas y limpieza de valores monetarios.
+- Formato monetario en soles peruanos (S/).
 - Tema visual claro y diseño responsive para escritorio y móvil.
 
 ### Documentación
