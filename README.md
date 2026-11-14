@@ -94,4 +94,26 @@ analisis_ventas.py       Aplicación Streamlit
 ventas.csv               Datos de ejemplo / datos reales
 requirements.txt         Dependencias
 .streamlit/config.toml   Tema visual claro
+CHANGELOG.md             Historial de versiones
 ```
+
+## Flujo de ramas
+
+- `main`: versión estable que se comparte y despliega.
+- `develop`: integración de mejoras y cambios en curso.
+
+Para trabajar en una mejora:
+
+```bash
+git switch develop
+# editar archivos
+git add .
+git commit -m "feat: descripcion del cambio"
+git switch main
+git merge --no-ff develop
+git push origin main
+git push origin develop
+```
+
+Los cambios se prueban en `develop` y, cuando están listos, se integran en
+`main` con un commit de merge.
