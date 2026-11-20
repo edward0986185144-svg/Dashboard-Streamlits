@@ -18,6 +18,7 @@ filtre la información **sin escribir código**.
 ## Ejecutar en local
 
 ```bash
+pip install streamlit
 pip install -r requirements.txt
 streamlit run analisis_ventas.py
 ```

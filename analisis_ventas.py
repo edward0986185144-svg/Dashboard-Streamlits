@@ -8,6 +8,7 @@ sin escribir código: filtros, indicadores, gráficos y descarga de datos.
 
 Ejecutar en local
 -----------------
+    pip install streamlit
     pip install -r requirements.txt
     streamlit run analisis_ventas.py
 
