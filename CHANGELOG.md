@@ -2,6 +2,19 @@
 
 Todos los cambios relevantes del proyecto se documentan en este archivo.
 
+## [1.1.0] - 2026-11-19
+
+### Modificado
+
+- Animaciones sutiles: KPIs y tarjetas se elevan al pasar el cursor, con
+  transiciones suaves y soporte para movimiento reducido.
+- Pie y micro-interacciones: píldoras y botones con leve levevantamiento y
+  foco visible accesible.
+
+### Documentación
+
+- Instrucción explícita `pip install streamlit` en la guía de instalación.
+
 ## [1.0.0] - 2026-11-14
 
 ### Agregado
