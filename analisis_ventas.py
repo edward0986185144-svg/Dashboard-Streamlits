@@ -178,7 +178,9 @@ header[data-testid="stHeader"] {
     border-radius: 999px;
     margin: 0 7px 6px 0;
     white-space: nowrap;
+    transition: border-color .2s ease, background .2s ease, box-shadow .2s ease, transform .2s ease;
 }
+.pill:hover { border-color: #D9D9D2; transform: translateY(-1px); }
 .pill b { color: var(--ink); font-weight: 600; }
 .pill-accent {
     color: #0B5F4F;
@@ -202,6 +204,11 @@ header[data-testid="stHeader"] {
     padding: 18px 20px 16px 20px;
     height: 100%;
     box-shadow: 0 1px 2px rgba(23, 24, 26, .03);
+    transition: box-shadow .3s ease, transform .3s ease;
+}
+.kpi:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 9px 24px rgba(23, 24, 26, .08);
 }
 .kpi-label {
     font-size: 10.5px;
@@ -235,6 +242,11 @@ header[data-testid="stHeader"] {
     border-radius: 18px;
     padding: 18px 20px 12px 20px !important;
     box-shadow: 0 1px 2px rgba(23, 24, 26, .03);
+    transition: box-shadow .3s ease, transform .3s ease;
+}
+[data-testid="stVerticalBlock"]:has(> [data-testid="stElementContainer"] .card-marker):hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 26px rgba(23, 24, 26, .07);
 }
 
 /* ---------- Títulos de sección ---------- */
@@ -354,7 +366,10 @@ header[data-testid="stHeader"] {
     border-color: #BDBDB4;
     color: var(--ink);
     background: #FFFFFF;
+    transform: translateY(-2px);
 }
+.stButton > button:active,
+.stDownloadButton > button:active { transform: translateY(0); }
 .stDownloadButton > button[kind="primary"] {
     background: var(--ink);
     border-color: var(--ink);
@@ -409,6 +424,24 @@ div[data-testid="stDataFrame"] {
     .hero-sub { font-size: 13px; }
     /* En móvil ocultamos el menú de datos para no romper el encabezado */
     .hero-pills .pill { white-space: normal; }
+}
+
+/* ---------- Foco visible y movimiento reducido ---------- */
+:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+}
+@media (prefers-reduced-motion: reduce) {
+    .kpi, [data-testid="stVerticalBlock"]:has(> [data-testid="stElementContainer"] .card-marker) {
+        transition: none !important;
+    }
+    .kpi:hover,
+    [data-testid="stVerticalBlock"]:has(> [data-testid="stElementContainer"] .card-marker):hover,
+    .pill:hover,
+    .stButton > button:hover,
+    .stDownloadButton > button:hover {
+        transform: none !important;
+    }
 }
 </style>
 """,
