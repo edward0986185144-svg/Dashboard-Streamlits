@@ -44,10 +44,10 @@ CSV_PATH = APP_DIR / "ventas.csv"
 
 INK = "#17181A"
 MUTED = "#6E6E66"
-LINE = "#E7E7E1"
+LINE = "#EFEFEF"
 ACCENT = "#0E7C66"
 ACCENT_SOFT = "#EDF5F2"
-BG = "#F5F5F2"
+BG = "#FFFFFF"
 
 PALETTE = [
     "#0E7C66",
@@ -110,13 +110,17 @@ st.markdown(
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
 :root {
-    --bg: #F5F5F2;
+    --bg: #FFFFFF;
     --card: #FFFFFF;
     --ink: #17181A;
     --muted: #6E6E66;
-    --line: #E7E7E1;
+    --line: #EFEFEF;
     --accent: #0E7C66;
     --accent-soft: #EDF5F2;
+}
+
+html, body, .stApp {
+    background: #FFFFFF;
 }
 
 html, body, .stApp, [class*="st-"] {
@@ -314,7 +318,7 @@ header[data-testid="stHeader"] {
     opacity: 1 !important;
 }
 [data-baseweb="select"] > div {
-    background: #FAFAF7 !important;
+    background: #FAFAFA !important;
     border-color: var(--line) !important;
     border-radius: 10px !important;
     min-height: 41px;
@@ -322,7 +326,7 @@ header[data-testid="stHeader"] {
 }
 [data-baseweb="select"] > div:hover { border-color: #C9C9C1 !important; }
 [data-baseweb="input"] > div {
-    background: #FAFAF7 !important;
+    background: #FAFAFA !important;
     border-color: var(--line) !important;
     border-radius: 10px !important;
 }
@@ -381,7 +385,7 @@ header[data-testid="stHeader"] {
     box-shadow: 0 12px 32px rgba(23, 24, 26, .10);
 }
 [data-testid="stFileUploaderDropzone"] {
-    background: #FAFAF7;
+    background: #FAFAFA;
     border: 1px dashed #D8D8D1;
     border-radius: 12px;
     padding: 12px;
@@ -915,7 +919,7 @@ def chart_3d(data: pd.DataFrame, has_dates: bool) -> go.Figure:
 
     axis_style = dict(
         showbackground=True,
-        backgroundcolor="#FAFAF7",
+        backgroundcolor="#FAFAFA",
         gridcolor="#E9E9E3",
         gridwidth=1,
         zerolinecolor="#E1E1D9",
